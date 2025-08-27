@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbm-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dbm-app
+  template:
+    metadata:
+      labels:
+        app: dbm-app
+    spec:
+      containers:
+      - name: dbm-app
+        image: dbm-app:latest  # Uses local Docker image
+        ports:
+        - containerPort: 8080
