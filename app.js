@@ -1,5 +1,5 @@
-const express = require('express');  // <-- Required to use Express
-const app = express();               // <-- Creates the Express app
+const express = require('express');
+const app = express();  // <-- This line is critical
 const PORT = 8080;
 
 app.get('/', (req, res) => {
@@ -25,7 +25,11 @@ app.get('/', (req, res) => {
           font-size: 2.5rem;
           color: #333;
           margin-bottom: 20px;
-          transition: color 0.3s;
+        }
+        input {
+          padding: 10px;
+          font-size: 1rem;
+          margin-right: 10px;
         }
         button {
           padding: 10px 20px;
@@ -36,14 +40,14 @@ app.get('/', (req, res) => {
     </head>
     <body>
       <div id="message" class="centered-text">Hello to the DBM World</div>
-      <button onclick="changeColor()">Change Color</button>
+      <input type="text" id="userInput" placeholder="Enter your message" />
+      <button onclick="updateMessage()">Update</button>
 
       <script>
-        function changeColor() {
-          const colors = ["#333", "#e74c3c", "#2ecc71", "#3498db", "#f1c40f"];
+        function updateMessage() {
+          const userInput = document.getElementById("userInput").value;
           const message = document.getElementById("message");
-          const randomColor = colors[Math.floor(Math.random() * colors.length)];
-          message.style.color = randomColor;
+          message.textContent = userInput || "Hello to the DBM World";
         }
       </script>
     </body>
