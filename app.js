@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
           font-size: 2.5rem;
           color: #333;
           margin-bottom: 20px;
+          transition: color 0.3s;
         }
         button {
           padding: 10px 20px;
@@ -35,13 +36,14 @@ app.get('/', (req, res) => {
     </head>
     <body>
       <div id="message" class="centered-text">Hello to the DBM World</div>
-      <button onclick="incrementCounter()">Count: <span id="counter">0</span></button>
+      <button onclick="changeColor()">Change Color</button>
 
       <script>
-        let count = 0;
-        function incrementCounter() {
-          count++;
-          document.getElementById("counter").textContent = count;
+        function changeColor() {
+          const colors = ["#333", "#e74c3c", "#2ecc71", "#3498db", "#f1c40f"];
+          const message = document.getElementById("message");
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+          message.style.color = randomColor;
         }
       </script>
     </body>
