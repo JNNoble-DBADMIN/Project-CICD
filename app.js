@@ -1,5 +1,5 @@
-const express = require('express');
-const app = express();  // <-- This line is critical
+const express = require('express');  // <-- Required to use Express
+const app = express();               // <-- Creates the Express app
 const PORT = 8080;
 
 app.get('/', (req, res) => {
@@ -26,11 +26,6 @@ app.get('/', (req, res) => {
           color: #333;
           margin-bottom: 20px;
         }
-        input {
-          padding: 10px;
-          font-size: 1rem;
-          margin-right: 10px;
-        }
         button {
           padding: 10px 20px;
           font-size: 1rem;
@@ -40,14 +35,13 @@ app.get('/', (req, res) => {
     </head>
     <body>
       <div id="message" class="centered-text">Hello to the DBM World</div>
-      <input type="text" id="userInput" placeholder="Enter your message" />
-      <button onclick="updateMessage()">Update</button>
+      <button onclick="incrementCounter()">Count: <span id="counter">0</span></button>
 
       <script>
-        function updateMessage() {
-          const userInput = document.getElementById("userInput").value;
-          const message = document.getElementById("message");
-          message.textContent = userInput || "Hello to the DBM World";
+        let count = 0;
+        function incrementCounter() {
+          count++;
+          document.getElementById("counter").textContent = count;
         }
       </script>
     </body>
@@ -58,3 +52,4 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);
 });
+
