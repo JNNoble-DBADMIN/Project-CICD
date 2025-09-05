@@ -1,14 +1,17 @@
-const express = require('express');  // <-- Required to use Express
-const app = express();               // <-- Creates the Express app
+const express = require('express'); // <-- Required to use Express
+const app = express(); // <-- Creates the Express app
 const PORT = 8080;
+
+// <-- Add this line to serve static files from the "public" folder
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.send(`
     <!DOCTYPE html>
     <html lang="en">
     <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>DBM World</title>
       <style>
         body {
@@ -18,7 +21,9 @@ app.get('/', (req, res) => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          background-color: #f0f0f0;
+          background-image: url('/bg.jpg'); /* <-- Your background image in public folder */
+          background-size: cover;
+          background-position: center;
           font-family: Arial, sans-serif;
         }
         .centered-text {
@@ -54,3 +59,4 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);
 });
+
