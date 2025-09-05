@@ -2,7 +2,7 @@ const express = require('express'); // <-- Required to use Express
 const app = express(); // <-- Creates the Express app
 const PORT = 8080;
 
-// <-- Add this line to serve static files from the "public" folder
+// <-- Serve static files from the "public" folder
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -16,22 +16,28 @@ app.get('/', (req, res) => {
       <style>
         body {
           margin: 0;
-          height: 100vh;
+          min-height: 100vh;          /* Ensure full height */
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          background-image: url('/bg.jpg'); /* <-- Your background image in public folder */
-          background-size: cover;
+          justify-content: center;     /* Vertical centering */
+          align-items: center;         /* Horizontal centering */
+          background-image: url('/bg.jpg'); /* Background image in public folder */
+          background-size: cover;      /* Cover the entire viewport */
           background-position: center;
+          background-repeat: no-repeat;
           font-family: Arial, sans-serif;
+          padding: 20px;               /* Padding for small screens */
+          box-sizing: border-box;
         }
+
         .centered-text {
-          font-size: 2.5rem;
+          font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size */
           color: #333;
           margin-bottom: 20px;
+          text-align: center;
           transition: color 0.3s;
         }
+
         button {
           padding: 10px 20px;
           font-size: 1rem;
@@ -57,6 +63,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}`);
+  console.log(\`App running on port \${PORT}\`);
 });
-
