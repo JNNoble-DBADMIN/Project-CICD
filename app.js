@@ -14,20 +14,23 @@ app.get('/', (req, res) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>DBM World</title>
       <style>
-        body {
+        html, body {
           margin: 0;
-          height: 100vh;               /* Always full viewport height */
-          width: 100vw;                /* Always full viewport width */
+          height: 100%;
+          width: 100%;
+        }
+
+        body {
           display: flex;
           flex-direction: column;
-          justify-content: center;     /* Center vertically */
-          align-items: center;         /* Center horizontally */
-          background-image: url('/bg.jpg'); /* Background in public folder */
-          background-size: cover;      /* Fill the screen, crop if needed */
-          background-position: center; /* Centered */
-          background-repeat: no-repeat;/* No tiling */
+          justify-content: center;
+          align-items: center;
+          background-image: url('/bg.jpg'); /* Background image in public folder */
+          background-size: contain;        /* Show whole image, no cropping */
+          background-position: center;     /* Keep it centered */
+          background-repeat: no-repeat;    /* Don’t tile */
+          background-color: black;         /* Fill empty space */
           font-family: Arial, sans-serif;
-          padding: 0;                  /* Remove padding */
           box-sizing: border-box;
         }
 
@@ -66,4 +69,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log("App running on port " + PORT);
 });
+
 
