@@ -1,8 +1,8 @@
-const express = require('express'); // <-- Required to use Express
-const app = express(); // <-- Creates the Express app
+const express = require('express'); 
+const app = express(); 
 const PORT = 8080;
 
-// <-- Serve static files from the "public" folder
+// Serve static files from the "public" folder
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -16,22 +16,23 @@ app.get('/', (req, res) => {
       <style>
         body {
           margin: 0;
-          min-height: 100vh;          /* Ensure full height */
+          height: 100vh;               /* Always full viewport height */
+          width: 100vw;                /* Always full viewport width */
           display: flex;
           flex-direction: column;
-          justify-content: center;     /* Vertical centering */
-          align-items: center;         /* Horizontal centering */
-          background-image: url('/bg.jpg'); /* Background image in public folder */
-          background-size: cover;      /* Cover the entire viewport */
-          background-position: center;
-          background-repeat: no-repeat;
+          justify-content: center;     /* Center vertically */
+          align-items: center;         /* Center horizontally */
+          background-image: url('/bg.jpg'); /* Background in public folder */
+          background-size: cover;      /* Fill the screen, crop if needed */
+          background-position: center; /* Centered */
+          background-repeat: no-repeat;/* No tiling */
           font-family: Arial, sans-serif;
-          padding: 20px;               /* Padding for small screens */
+          padding: 0;                  /* Remove padding */
           box-sizing: border-box;
         }
 
         .centered-text {
-          font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size */
+          font-size: clamp(1.5rem, 4vw, 2.5rem);
           color: #333;
           margin-bottom: 20px;
           text-align: center;
@@ -65,3 +66,4 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log("App running on port " + PORT);
 });
+
